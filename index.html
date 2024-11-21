@@ -1,50 +1,222 @@
 ```html
-<html>
+<!DOCTYPE HTML>
+<html><!-建设网页->
     <head>
-        <title>网站首页</title>
+        <title>教程学习</title>  
+        <!--<base href="" target = "_blank">-->
         <style type = "text/css">
-            #MenuBar:link{
+            #img1{width:300px;height:240px;}
+            #img2{width:60px;height:60px;}
+            #img3{}
+            #daan{color:black;}
+            #link1:link
+            {
                 text-decoration:none;
-                color:black;
-            }
-            #MenuBar:visited{
-                color:purple;
-            }
-            #MenuBar:hover{
                 color:blue;
             }
-            #MenuBar:active{
-                color:red;
+            #link1:hover
+            {
+                color:green;
+                text-decoration:underline;
+            }
+            img{
+                border:2px solid green;
+            }
+            p{
+                font-family = "微软雅黑";
+                font-size = 5px;
+                color:black;
+                background-color: white;
+            }
+			mov_title{/*网站首页视频标题统一格式*/
+                display: table;
+                margin: 0 auto;
+            }
+            .movie3{/*网站首页视频统一格式*/
+                display: table;
+                margin: 0 auto;
+            }
+            mov_title2{/*只对段落起作用，不对调整视频位置起作用*/
+                text-align: center;
+            }
+            .movie{/*网站首页视频统一格式*/
+                text-align: center;/*内容对齐*/
+            }
+            .movie2{ /*movie2的效果作用与movie相同*/
+                display:flex;/*存在多个段落时，什么都对不齐*/
+                justify-content:center;
+                align-items:center;
+                /*height:500px;*/
+            }
+            .movie4{/*制定视频简介框架宽度*/
+                width: 720px;
+  				margin: 0 auto;
             }
         </style>
     </head>
     <body>
-    	<div>
-            <p>
-                <table>
-                    <tr>
-                        <td><a id="MenuBar" href="网站首页.html" target = _self>首页</a></td>
-                        <td><a id="MenuBar" href="" target = _blank>视频</a></td>
-                        <td><a id="MenuBar" href="" target = _blank>行业知识</a></td>
-                        <td><a id="MenuBar" href="链接墙.html" target = _blank>链接墙</a></td>
-                        <td><a id="MenuBar" href="个人中心.html" target = _blank>个人中心</a></td>
-                        <td><a id="MenuBar" href="教程学习.html" target = _blank>教程学习</a></td>
-                        <td><a id="MenuBar" href="导航栏.html" target = _blank>导航栏</a></td>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                        <td><span id= "nowtime"></span></td>
-                    </tr>
-                </table>
-            </p>
-            <hr>
+        <div><!--收藏网站网址1-->
+            <dl>
+                <dt>论坛</dt>
+                <dd>
+                    <ol>
+                        <li><a id="link1" href="https://www.cnblogs.com/" target = "_blank">博客园https://www.cnblogs.com/</a></li><br>
+                        <li><a id="link1" href="https://bbs.pcbeta.com/" target = "_blank">远景论坛https://bbs.pcbeta.com/</a></li><br>
+                        <li><a id="link1" href="https://juejin.cn/" target = "_blank">稀土掘金https://juejin.cn/</a></li><br>
+                        <li><a id="link1" href="https://www.oschina.net/" target = "_blank">OSCHINA社区https://www.oschina.net/</a></li>
+                    </ol>
+                </dd>
+            </dl>
         </div>
-   	</body>
+        <div><!--收藏网站网址2-->
+            <dl>
+                <dt>软件官网</dt>
+                <dd>
+                    <ol>
+                        <li><a id="link1" href="" target = "_blank"></a></li><br>
+                        <li><a id="link1" href="" target = "_blank"></a></li><br>
+                        <li><a id="link1" href="" target = "_blank"></a></li><br>
+                    </ol>
+                </dd>
+            </dl>
+        </div>
+      <hr>
+        <div><!--图鉴编号资料-->
+            <table>
+                <tr>
+                    <td>编号名称</td>
+                    <td>种族值</td>
+                    <!--<td rowspan="2"><img id="img2" src="../image/菊草叶-3.jpeg"/></td>-->
+                </tr>
+                <tr>
+                    <td>菊草叶</td> 
+                    <td>522</td>
+                </tr>
+            </table>
+        </div>
+      <hr>
+        <div><!--更改图片-->
+            <button onclick="Changephotos()">切换图片</button>
+            <button id = pho_but onclick="Fold()">收起图片</button>
+                <span>&nbsp;&nbsp;&nbsp;答案是</span>
+                <span id= daan>//////</span>
+                <span>&nbsp;&nbsp;&nbsp;</span>
+            <button onclick="Daan()">显示答案</button>
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <span id = "nowtime"></span>
+            <br>
+            <input type = "text" onkeyup = "Show_password(this.value)">
+            <span id = sh_pass></span>
+            <br>
+            <img id="img3" src="../image/123.jpeg" alt="Error" title="菊草叶"/>
+            <!--src="C:\Users\zxian2001\Desktop\新建文件夹\image\123.jpeg"或者src="C:/Users/zxian2001/Desktop/新建文件夹/image/123.jpeg"也行，正反除号都能成功访问-->
+            <img id="img1" src="../image/123.jpeg" alt="Error" title="菊草叶"/>     
+        </div><!--上述图片经测试，绝对路径要比相对路径慢许多，大概0.5s左右，影响打开网页速度-->
+        <div><!--表单-->
+            <form name="myform" onsubmit="return EndForm()"
+                  method ="post"><!--定义一个表单，表单开始-->
+            账号：<input type="text"/><!--单行文本框-->
+            <br /><!--换行-->
+            密码：<input type="password"/><!--密码文本框-->
+            <br /><!--换行-->
+            <!--下面是单选按钮，有两个选项，二选一-->
+            性别：<input type="radio" name="sex" value="male"/>男
+                  <input type="radio" name="sex" value="female"/>女
+            <br /><!--换行-->
+            <!--下面是复选框，可多选-->
+            爱好：<input type="checkbox" name="interest" value="ah1" />游泳
+                  <input type="checkbox" name="interest" value="ah2" />篮球
+                  <input type="checkbox" name="interest" value="ah3" />跑步
+            <br /><!--换行-->
+            简历：<input type="file" /><!--上传文件-->
+            <br /><!--换行-->
+            <input type="submit" value="上传" 
+                   style="position:relative;
+                          top:20px;left:90px;"/><!--提交按钮-->
+        	</form><!--表单结束-->
+        </div>
+		<!---------------方法1-视频、简介居中---------------------------------->
+        <!--<mov_title><!--//自定义了一个名称为mov_title的p段落元素
+            <h2>威風堂々(720P_HD).mp4</h2>
+                <p>
+                    简介：标题为 威風堂々(720P_HD).mp4，通过youtube官网网址处，搜索下载。
+                </p>
+            <video width="720" height="450" controls loop>
+            	<source src="movie/威風堂々(720P_HD).mp4" type="video/mp4">
+      		</video>
+        </mov_title>-->
+        <!---------------方法2-视频、简介居中---------------------------------->
+        <div class="movie4"><!--//movie3可以，movie和movie2不行-->
+        	<h2>威風堂々(720P_HD).mp4</h2>
+                <p>
+                    简介：标题为 威風堂々(720P_HD).mp4，通过youtube官网网址处，搜索下载。
+                </p>
+            <video width="720" height="450" controls loop>
+            	<source src="../movie/威風堂々(720P_HD).mp4" type="video/mp4">
+      		</video>
+        </div>
+        <!---------------方法3-视频、简介居中---------------------------------->
+        <!--<p class="movie"><!--//使用样式，内容没什么变化
+        	<h2>威風堂々(720P_HD).mp4</h2>
+                <p>
+                    简介：标题为 威風堂々(720P_HD).mp4，通过youtube官网网址处，搜索下载。
+                </p>
+            <video width="720" height="450" controls>
+            	<source src="movie/威風堂々(720P_HD).mp4" type="video/mp4">
+      		</video>
+        </p>-->
+    </body>
 </html>
-<script>
-var IntervalID = setInterval(Show_Time,1000);
-function Show_Time()
-    {
-        let nowtime = new Date();
-        document.getElementById("nowtime").innerHTML = nowtime;
-    }
+<script>//脚本代码
+     function Changephotos(){
+         var x = document.getElementById("img1");
+         if(x.src.match("123")){
+             x.src = "../image/456.png";
+             x.title = "群聊二维码";
+         }
+         else
+         {
+             x.src = "../image/123.jpeg";
+             x.title = "菊草叶";
+         }
+         //alert("图片已切换");
+     }
+     var flag = 1;
+     function Fold(){//拉起/展开图片函数
+         if(flag == 1)
+         {
+             document.getElementById("img3").style.display = "none";
+             document.getElementById("img1").style.display = "none";
+             document.getElementById("pho_but").innerHTML = "展开图片";
+             //alert("图片已折叠");
+             flag = 0;
+         }
+         else
+         {
+             document.getElementById("img3").style.display = "inline";
+             document.getElementById("img1").style.display = "inline";
+             document.getElementById("pho_but").innerHTML = "收起图片";
+             //alert("图片已展开");
+             flag = 1;
+         }
+     }
+     function Daan(){//显示答案
+         document.getElementById("daan").innerHTML = "Hello World";
+     }
+     function Show_password(x){
+         text = x;
+         if(isNaN(x))
+             text= "Input not valid,it is not figure："+text;
+         document.getElementById("sh_pass").innerHTML = text;
+     }
+     var IntervalID = setInterval(Show_Time,1000);
+     function Show_Time()
+     {
+         let nowtime = new Date();
+         document.getElementById("nowtime").innerHTML = nowtime;
+     }
+     /*
+     	match,onkeyup,querySelector,Date().getDay(),setInterval,startTimer,
+     */
 </script>
 ```
